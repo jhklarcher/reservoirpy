@@ -21,7 +21,7 @@ def reservoir_kernel(reservoir, u, r):
     dist = reservoir.noise_type
     noise_gen = reservoir.noise_generator
 
-    pre_s = W @ r + Win @ (u + noise_gen(dist, u.shape, g_in)) + bias
+    pre_s = W @ r + Win @ u + bias
 
     if reservoir.has_feedback:
         Wfb = reservoir.Wfb
