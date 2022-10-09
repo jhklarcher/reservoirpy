@@ -58,7 +58,6 @@ def forward_internal(reservoir, x: np.ndarray) -> np.ndarray:
     s_next = (
         (1 - lr) * r
         + lr * f(reservoir_kernel(reservoir, u, r))
-        + noise_gen(dist, r.shape, g_rc)
     )
 
     return s_next.T
@@ -90,7 +89,6 @@ def forward_external(reservoir, x: np.ndarray) -> np.ndarray:
     s_next = (
         (1 - lr) * s
         + lr * reservoir_kernel(reservoir, u, r)
-        + noise_gen(dist, r.shape, g_rc)
     )
 
     reservoir.set_param("internal_state", s_next.T)
